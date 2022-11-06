@@ -3,6 +3,7 @@ import { AppBar, CssBaseline, Toolbar, Typography, Link, Container, Box } from '
 import { createTheme } from '@mui/material/styles';
 import Head from 'next/head';
 import NextLink from 'next/link';
+import classes from '../utils/classes';
 export default function Layout({title, description, children}) {
     const theme = createTheme({
         components: {
@@ -42,19 +43,19 @@ export default function Layout({title, description, children}) {
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline/>
-        <AppBar position='static'>
-            <Toolbar>
+        <AppBar position='static' sx={classes.appbar}>
+            <Toolbar sx={classes.toolbar}>
             <NextLink href="/" passHref>
                 <Link>
-                <Typography>ecommerce</Typography>
+                <Typography sx={classes.brand}>ecommerce</Typography>
                 </Link>
                 </NextLink>
             </Toolbar>
         </AppBar>
-        <Container component='main'>
+        <Container component='main' sx={classes.main}>
             {children}
         </Container>
-        <Box component="footer">
+        <Box component="footer" sx={classes.footer}>
           <Typography>All rights reserved. Sanity ecommerce</Typography>
         </Box>
       </ThemeProvider>
