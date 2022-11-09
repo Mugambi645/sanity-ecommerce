@@ -11,6 +11,7 @@ import { Store } from "../../utils/Store";
 import { useRouter } from 'next/router';
 import axios from "axios";
 export default function ProductScreen(props) {
+  const router = useRouter();
     const { slug } = props;
     const { state: {cart}, dispatch} = useContext(Store);
     const { enqueueSnackbar } = useSnackbar();
@@ -54,7 +55,7 @@ export default function ProductScreen(props) {
         enqueueSnackbar(`${product.name} added to the cart`, {
             variant: 'success',
           });
-          
+          router.push("/cart")
     }
     return (
         <Layout title={product?.title}>
