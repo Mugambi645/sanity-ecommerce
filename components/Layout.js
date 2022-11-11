@@ -61,6 +61,7 @@ export default function Layout({title, description, children}) {
     setAnchorEl(null);
     dispatch({ type: 'USER_LOGOUT' });
     jsCookie.remove('userInfo');
+    jsCookie.remove('shippingAddress')
     jsCookie.remove('cartItems');
     
     router.push('/');
