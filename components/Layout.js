@@ -8,7 +8,9 @@ import { useContext, useState } from 'react';
 import { useRouter } from 'next/router';
 import classes from '../utils/classes';
 import { Store } from '../utils/Store';
+
 export default function Layout({title, description, children}) {
+  const router = useRouter();
   const { state, dispatch} = useContext(Store);
   const { darkMode, cart, userInfo } = state;
     const theme = createTheme({
@@ -62,6 +64,7 @@ export default function Layout({title, description, children}) {
     dispatch({ type: 'USER_LOGOUT' });
     jsCookie.remove('userInfo');
     jsCookie.remove('shippingAddress')
+    jsCookie.remove('paymentMethod');
     jsCookie.remove('cartItems');
     
     router.push('/');
